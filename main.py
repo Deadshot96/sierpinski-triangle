@@ -71,12 +71,12 @@ class Sierpinski:
         
     
     def add_level(self):
+        # print("adding level: ")
         for i in range(len(self.triangles)):
             triangle = self.triangles.pop(0)
             triangle.create_children()
             self.triangles.extend(triangle.getChildren())
             
-        
         print(len(self.triangles))
         
 
@@ -92,10 +92,10 @@ class Sierpinski:
                 if event.type == pygame.QUIT:
                     run = False
                     
-                pressed = pygame.key.get_pressed()
-                if pressed[pygame.K_SPACE]:
-                    self.add_level()
-
+                if event.type == pygame.KEYDOWN:
+                    pressed = pygame.key.get_pressed()
+                    if pressed[pygame.K_SPACE]:
+                        self.add_level()
                             
             self.draw()
             
